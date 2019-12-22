@@ -11,8 +11,8 @@ class ActualMap extends Component {
     super(props)
     this.state = {
       name: '',
-      latitude: null,
-      longitude: null,
+      latitude: 500,
+      longitude: 500,
       currentLat: 500,
       currentLng: 500,
       handlerEnabled: false
@@ -28,7 +28,9 @@ class ActualMap extends Component {
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({
         currentLat: position.coords.latitude,
-        currentLng: position.coords.longitude
+        currentLng: position.coords.longitude,
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
       })
       console.log(
         'IST THIS WORKING???',
@@ -78,7 +80,7 @@ class ActualMap extends Component {
 
         {this.props.places &&
         this.state.currentLat !== 500 &&
-        this.state.currentLng !== 500 ? (
+        this.state.longitude !== 500 ? (
           <div id="work">
             <Map
               google={this.props.google}
