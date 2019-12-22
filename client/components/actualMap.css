@@ -1,13 +1,5 @@
-#map {
-  /* display: flex; */
-  background-color: dodgerblue;
-  /* justify-content: center; */
-  /* flex-wrap: wrap; */
-}
-map {
-  background-color: dodgerblue;
-  /* justify-content: center; */
-}
 #work {
-  background-color: dodgerblue;
+  height: '100vh';
+  width: '100%';
+  margin: auto;
 }

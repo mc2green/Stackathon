@@ -3,15 +3,19 @@ import {Map, GoogleApiWrapper, Marker, InfoWindow} from 'google-maps-react'
 import {getPlacesThunk, addPlaceThunk} from '../store/place'
 import {connect} from 'react-redux'
 import LocationSearchInput from './locationSearchInput'
-// import './actualMap.css'
+import GOOGLE_API_KEY from '../../secrets'
+import mapStyle from './actualMap.css'
 
 class ActualMap extends Component {
   constructor(props) {
     super(props)
     this.state = {
       name: '',
-      latitude: 41.5868,
-      longitude: -93.625
+      latitude: null,
+      longitude: null,
+      currentLat: 500,
+      currentLng: 500,
+      handlerEnabled: false
     }
     console.log('CONSTRUCTOR')
     this.displayMarkers = this.displayMarkers.bind(this)
@@ -20,9 +24,27 @@ class ActualMap extends Component {
 
   componentDidMount() {
     this.props.getPlaces()
+    console.log('IS THIS WORKING TOOO')
+    navigator.geolocation.getCurrentPosition(position => {
+      this.setState({
+        currentLat: position.coords.latitude,
+        currentLng: position.coords.longitude
+      })
+      console.log(
+        'IST THIS WORKING???',
+        this.state.currentLat,
+        this.state.currentLng
+      )
+    })
   }
   handler(name, lat, lng) {
-    this.setState({name: name, latitude: lat, longitude: lng})
+    this.setState({
+      name: name,
+      latitude: lat,
+      longitude: lng,
+      handlerEnabled: true
+    })
+
     console.log('MAP STATE', this.state)
   }
   displayMarkers = () => {
@@ -47,11 +69,6 @@ class ActualMap extends Component {
   }
 
   render() {
-    const mapStyle = {
-      width: '80%',
-      height: '80%',
-      margin: 'auto'
-    }
     return (
       <div id="map">
         <LocationSearchInput handler={this.handler} />
@@ -59,12 +76,19 @@ class ActualMap extends Component {
           + Add Place
         </button>
 
-        {this.props.places ? (
+        {this.props.places &&
+        this.state.currentLat !== 500 &&
+        this.state.currentLng !== 500 ? (
           <div id="work">
             <Map
               google={this.props.google}
-              style={mapStyle}
+              showsUserLocation={true}
+              defaultCenter={{
+                lat: this.state.currentLat,
+                lng: this.state.currentLng
+              }}
               defaultZoom={this.props.zoom}
+              centerAroundCurrentLocation={true}
               center={{lat: this.state.latitude, lng: this.state.longitude}}
             >
               {this.displayMarkers()}
@@ -75,7 +99,7 @@ class ActualMap extends Component {
           </div>
         ) : (
           <div>
-            <h1>GOT NOTHING</h1>
+            <h1>Your map is still loading</h1>
           </div>
         )}
       </div>
@@ -91,7 +115,7 @@ const mapDispatchToProps = dispatch => ({
   addPlace: place => dispatch(addPlaceThunk(place))
 })
 const WrappedContainer = GoogleApiWrapper({
-  apiKey: 'AIzaSyBhWzAETpXr8rtg_wdZIxWo_NoThy7jN9E'
+  apiKey: GOOGLE_API_KEY
 })(ActualMap)
 
 export default connect(mapStateToProps, mapDispatchToProps)(WrappedContainer)
