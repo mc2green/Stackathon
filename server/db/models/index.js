@@ -8,8 +8,11 @@ const UserPlace = require('./userPlace')
  *
  *    BlogPost.belongsTo(User)
  */
+//User Model Associations
+
+// Place.hasMany(User)
+User.hasMany(Place)
 Place.belongsToMany(User, {through: UserPlace})
-User.belongsToMany(Place, {through: UserPlace})
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,

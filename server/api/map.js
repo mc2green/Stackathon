@@ -1,10 +1,14 @@
 const router = require('express').Router()
-const {Place} = require('../db/models')
+const {Place, UserPlace, User} = require('../db/models')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    const places = await Place.findAll()
+    const places = await Place.findAll({
+      where: {
+        userId: req.user.id
+      }
+    })
     if (places) {
       res.send(places)
     } else {
@@ -21,7 +25,8 @@ router.post('/', async (req, res, next) => {
     const createPlace = await Place.create({
       name: name,
       latitude: latitude,
-      longitude: longitude
+      longitude: longitude,
+      userId: req.user.id
     })
     if (createPlace) {
       res.json(createPlace)
