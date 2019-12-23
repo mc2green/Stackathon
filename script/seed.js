@@ -1,7 +1,47 @@
 'use strict'
 
 const db = require('../server/db')
-const {Place} = require('../server/db/models')
+const {User, Place} = require('../server/db/models')
+
+const users = [
+  {
+    firstName: 'Jeff',
+    lastName: 'Bezos',
+    email: 'BigJDawg@ggmail.com',
+    password: 'Password123'
+  },
+
+  {
+    firstName: 'Logan',
+    lastName: 'LClossier',
+    email: 'Xxda14u2NvxX@ggmail.com',
+    password: 'Password123'
+  },
+  {
+    firstName: 'Don',
+    lastName: 'Julio',
+    email: 'ILuvYaats@ggmail.com',
+    password: 'Password123'
+  },
+  {
+    firstName: 'Richard',
+    lastName: 'Long',
+    email: 'CPT-R_LONG@ggmail.com',
+    password: 'Password123'
+  },
+  {
+    firstName: 'Cornelius',
+    lastName: 'Blackbeard',
+    email: 'NotThatBlackbeard@ggmail.com',
+    password: 'Password123'
+  },
+  {
+    firstName: 'Megan',
+    lastName: 'Donnelly',
+    email: 'megan@gmail.com',
+    password: 'test1234'
+  }
+]
 
 const places = [
   {
@@ -24,7 +64,7 @@ const places = [
 async function seed() {
   await db.sync({force: true})
   await Place.bulkCreate(places)
-
+  await User.bulkCreate(users)
   console.log('db synced!')
   console.log(`seeded successfully`)
 }

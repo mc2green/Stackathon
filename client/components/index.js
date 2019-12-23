@@ -5,6 +5,6 @@
  */
 export {default as Navbar} from './navbar'
 export {default as UserHome} from './user-home'
-
+export {Login, Signup} from './authForm'
 export {default as ActualMap} from './actualMap'
 export {default as LocationSearchInput} from './locationSearchInput'
