@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === 'test') {
  * root. This file is included in the .gitignore - it will NOT be tracked
  * or show up on Github. On your production server, you can add these
  * keys as environment variables, so that they can still be read by the
- * Node process on process.env
+ * Node process on process.env.
  */
 if (process.env.NODE_ENV !== 'production') require('../secrets')
 
