@@ -1,30 +1,27 @@
 language: node_js
 node_js:
-  - node # uses most recent stable node version
+- node
 services:
-  - postgresql # starts up postgres
+- postgresql
 addons:
-  postgresql: '10' # recent postgres version on Travis
-dist: xenial # uses xenial environment
+  postgresql: '10'
+dist: xenial
 notifications:
   email:
-    on_success: change # default: change (only when going from broken to fixed)
-    on_failure: always # default: always (which is annoying, as it should be)
+    on_success: change
+    on_failure: always
 install:
-  - npm ci # faster, goes only from package-lock
+- npm ci
 before_script:
-  - psql -c 'create database "been-there-stackathon-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
+- psql -c 'create database "been-there-stackathon-test";' -U postgres
 script:
-  - npm test # test the code
-  - npm run build-client # make the bundle
-before_deploy: # omit node_modules, since we set skip_cleanup below
-  - rm -rf node_modules
-deploy: # see README for details on these keys
-  # prevents travis from deleting the build
+- npm test
+- npm run build-client
+before_deploy:
+- rm -rf node_modules
+deploy:
   skip_cleanup: true
   provider: heroku
-  # app should be your heroku app name; see README
   app: been-there-stackathon
-  # the secure key indicates an encrypted value; see README
   api_key:
-    secure: GS9zLI91tqC8smYpsITLUw
+    secure: jHcE/mNn0Ka61x/Mn2h36jghNvxq+oklXqR9hkZ1uxjt9k6WqllY4GKSi6gDaenufyAcMen868u6sjNbBeubodJSYvZnxMkXsX7VO/S3yePC+gw0tJqz1IUiK34OVOqLhbIPg7WA2qyKpatxdxeD2KAinEj5RuZKYmcdFuMzENENrBXa/tJJNhje2hYaSFmaG6GRhIRVK8Wv97fCQu07CPI+XDfU5kgWblTeOKl74i+hSacbr7OwqAClkHpwVGQuxYYKnOaR5Rht+FEjeLavn8Agw2bQNB3yXNzk+/pb8pM+fKaiqt/05GzoYRe9hexV9XRIYDmDMnQzupcEQ2RB/qpfN5yOBOCwRS6hujen6atj4fr7SWMWEnKkiSt8bf3FYSrKwmn1/zgPRGED0TlItf6MKtXHVVd5gXLqs7XX6dVxoyWCY8RNFDQZR9s1AYgeqOrR6ALAL8mprOlPAnP1dWdGwA9YYbff5TzpnHpDO1Mfw16Hbt68ZnlKXMn2klg37T4VzeklMwBghF8ZiL8t5QAdsgfosoEGePhKepZtDVRNOAGp0ncC9WNvyYY6ykcVzp6sjpg0Jm9Io8KxDjCu1O9iDvTHVOcAyTkuvGhTM5aTehNw9TuywJ9CEQa8UfMh864aI4x8H9AAMr90nM4Z3M4Zp1Iv42c13W8a1RL7dps=
