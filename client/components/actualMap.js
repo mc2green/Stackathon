@@ -4,7 +4,7 @@ import {getPlacesThunk, addPlaceThunk} from '../store/place'
 import {connect} from 'react-redux'
 import LocationSearchInput from './locationSearchInput'
 import GOOGLE_API_KEY from '../../secrets'
-import mapStyle from './actualMap.css'
+import '../css/actualMap.css'
 
 class ActualMap extends Component {
   constructor(props) {

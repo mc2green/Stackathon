@@ -1,15 +1,18 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Button} from 'semantic-ui-react'
+import {Button} from 'react-bootstrap'
 
 // import '../css/home.css'
 
 const Home = ({isLoggedIn, firstName, history}) => {
   return (
     <div id="home">
-      {isLoggedIn ? <div>Let's set Sail {firstName}</div> : null}
-      <Button inverted onClick={() => history.push('/')}>
-        TAKE ME AWAY
+      {/* {isLoggedIn ? <div>Let's set Sail {firstName}</div> : null} */}
+      <Button variant="outline-info" onClick={() => history.push('/login')}>
+        Login
+      </Button>
+      <Button variant="outline-info" onClick={() => history.push('/signup')}>
+        Sign Up
       </Button>
     </div>
   )
