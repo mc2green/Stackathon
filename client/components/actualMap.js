@@ -117,7 +117,7 @@ const mapDispatchToProps = dispatch => ({
   addPlace: place => dispatch(addPlaceThunk(place))
 })
 const WrappedContainer = GoogleApiWrapper({
-  apiKey: GOOGLE_API_KEY
+  apiKey: process.env.GOOGLE_API_KEY
 })(ActualMap)
 
 export default connect(mapStateToProps, mapDispatchToProps)(WrappedContainer)
