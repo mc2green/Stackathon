@@ -26,7 +26,12 @@ if (process.env.NODE_ENV === 'test') {
  * keys as environment variables, so that they can still be read by the
  * Node process on process.env.
  */
-if (process.env.NODE_ENV !== 'production') require('../secrets')
+if (process.env.NODE_ENV !== 'production') {
+  console.log('NODE_ENV: ' + process.env.NODE_ENV)
+  require('../secrets')
+} else {
+  console.log('NODE_ENV: ' + process.env.NODE_ENV)
+}
 
 // passport registration
 passport.serializeUser((user, done) => done(null, user.id))
