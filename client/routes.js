@@ -3,7 +3,7 @@ import {Route, Switch} from 'react-router-dom'
 import {ActualMap, Login, Signup, Home} from './components'
 
 /**
- * COMPONENT
+ * COMPONEN
  */
 class Routes extends Component {
   render() {
