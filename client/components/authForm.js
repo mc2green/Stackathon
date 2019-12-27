@@ -10,6 +10,7 @@ import {auth} from '../store'
  */
 export const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
+  console.log('LOGIN', props)
 
   return (
     <div id="form" className="ui form error">
