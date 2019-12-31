@@ -12,6 +12,8 @@ class Home extends Component {
       selectedVideo: '',
       customVideos: ['J8sGGGVbrFs', 'quLYD3eu7zo']
     }
+
+    this.randomVideo = this.randomVideo.bind(this)
   }
 
   componentDidMount() {
