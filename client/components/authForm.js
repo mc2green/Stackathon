@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
 import {Link} from 'react-router-dom'
+import {Container} from 'react-bootstrap'
 
 // import '../css/auth-form.css'
 
@@ -14,61 +15,63 @@ export const AuthForm = props => {
   console.log('LOGIN', props)
 
   return (
-    <div id="form" className="ui form error">
-      <form onSubmit={handleSubmit} name={name} className="ui mini form">
-        <div>
-          <label htmlFor="email" />
-          <input name="email" type="email" placeholder="email" required />
-        </div>
-        <div>
-          <label htmlFor="password" />
-          <input
-            name="password"
-            type="password"
-            placeholder="password"
-            required
-          />
-        </div>
-        {name === 'signup' && (
+    <Container>
+      <div id="form" className="ui form error">
+        <form onSubmit={handleSubmit} name={name} className="ui mini form">
           <div>
-            <div>
-              <label htmlFor="firstName" />
-              <input
-                name="firstName"
-                type="text"
-                placeholder="First Name"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="lastName" />
-              <input
-                name="lastName"
-                type="text"
-                placeholder="Last Name"
-                required
-              />
-            </div>
+            <label htmlFor="email" />
+            <input name="email" type="email" placeholder="email" required />
           </div>
-        )}
-        <div>
-          <button type="submit" className="mini ui button">
-            {displayName}
-          </button>
-        </div>
-        <br />
-        {error &&
-          error.response && (
-            <div className="ui error message">
-              {' '}
-              {error.response.data}
-              <Link to="/"> Back to home</Link>
-              <Link to="/signup"> Sign Up!</Link>
+          <div>
+            <label htmlFor="password" />
+            <input
+              name="password"
+              type="password"
+              placeholder="password"
+              required
+            />
+          </div>
+          {name === 'signup' && (
+            <div>
+              <div>
+                <label htmlFor="firstName" />
+                <input
+                  name="firstName"
+                  type="text"
+                  placeholder="First Name"
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="lastName" />
+                <input
+                  name="lastName"
+                  type="text"
+                  placeholder="Last Name"
+                  required
+                />
+              </div>
             </div>
           )}
-      </form>
-      <a href="/auth/google">{displayName} with Google</a>
-    </div>
+          <div>
+            <button type="submit" className="mini ui button">
+              {displayName}
+            </button>
+          </div>
+          <br />
+          {error &&
+            error.response && (
+              <div className="ui error message">
+                {' '}
+                {error.response.data}
+                <Link to="/"> Back to home</Link>
+                <Link to="/signup"> Sign Up!</Link>
+              </div>
+            )}
+        </form>
+        <a href="/auth/google">{displayName} with Google</a>
+      </div>
+    </Container>
   )
 }
 

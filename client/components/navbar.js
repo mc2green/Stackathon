@@ -13,27 +13,23 @@ const NavbarComponent = ({handleClick, isLoggedIn}) => (
     {console.log('ISLOGGEDIN', isLoggedIn)}
     {isLoggedIn ? (
       <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="/">
-            <FontAwesomeIcon icon={faMapMarkedAlt} /> BeenThere!
-          </Navbar.Brand>
-          <Nav className="mr-auto">
-            <Nav.Link href="/">About</Nav.Link>
-            <Nav.Link href="/map">My Map</Nav.Link>
-            <Nav.Link href="/travel">Travel</Nav.Link>
-            <Nav.Link href="/" onClick={handleClick}>
-              Logout
-            </Nav.Link>
-          </Nav>
-        </Container>
+        <Navbar.Brand href="/">
+          <FontAwesomeIcon icon={faMapMarkedAlt} /> BeenThere!
+        </Navbar.Brand>
+        <Nav className="mr-auto">
+          <Nav.Link href="/">About</Nav.Link>
+          <Nav.Link href="/map">My Map</Nav.Link>
+          <Nav.Link href="/travel">Travel</Nav.Link>
+          <Nav.Link href="/" onClick={handleClick}>
+            Logout
+          </Nav.Link>
+        </Nav>
       </Navbar>
     ) : (
       <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">
-            <FontAwesomeIcon icon={faMapMarkedAlt} /> BeenThere!
-          </Navbar.Brand>
-        </Container>
+        <Navbar.Brand href="#home">
+          <FontAwesomeIcon icon={faMapMarkedAlt} /> BeenThere!
+        </Navbar.Brand>
       </Navbar>
     )}
   </div>

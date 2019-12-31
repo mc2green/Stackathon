@@ -17,14 +17,12 @@ class ActualMap extends Component {
       currentLng: 500,
       handlerEnabled: false
     }
-    console.log('CONSTRUCTOR')
     this.displayMarkers = this.displayMarkers.bind(this)
     this.handler = this.handler.bind(this)
   }
 
   componentDidMount() {
     this.props.getPlaces()
-    console.log('IS THIS WORKING TOOO')
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({
         currentLat: position.coords.latitude,
@@ -32,11 +30,6 @@ class ActualMap extends Component {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
       })
-      console.log(
-        'IST THIS WORKING???',
-        this.state.currentLat,
-        this.state.currentLng
-      )
     })
   }
   handler(name, lat, lng) {
@@ -46,14 +39,10 @@ class ActualMap extends Component {
       longitude: lng,
       handlerEnabled: true
     })
-
-    console.log('MAP STATE', this.state)
   }
   displayMarkers = () => {
     if (this.props.places) {
-      console.log('DISPLAYING MARKERS')
       const {places} = this.props
-      console.log('PLACES', this.props.places)
       return places.map(place => {
         return (
           <Marker
@@ -61,6 +50,9 @@ class ActualMap extends Component {
             position={{
               lat: place.latitude,
               lng: place.longitude
+            }}
+            icon={{
+              url: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
             }}
           />
         )
@@ -77,7 +69,6 @@ class ActualMap extends Component {
         <button type="button" onClick={() => this.props.addPlace(this.state)}>
           + Add Place
         </button>
-
         {this.props.places &&
         this.state.currentLat !== 500 &&
         this.state.longitude !== 500 ? (
@@ -85,7 +76,7 @@ class ActualMap extends Component {
             <Map
               google={this.props.google}
               showsUserLocation={true}
-              defaultCenter={{
+              initialCenter={{
                 lat: this.state.currentLat,
                 lng: this.state.currentLng
               }}
@@ -93,15 +84,18 @@ class ActualMap extends Component {
               centerAroundCurrentLocation={true}
               center={{lat: this.state.latitude, lng: this.state.longitude}}
             >
-              {this.displayMarkers()}
               <Marker
                 position={{lat: this.state.latitude, lng: this.state.longitude}}
+                icon={{
+                  url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+                }}
               />
+              {this.displayMarkers()}
             </Map>
           </div>
         ) : (
           <div>
-            <h1>Your map is still loading</h1>
+            <h1 className="display-1">Your map is still loading...</h1>
           </div>
         )}
       </div>
