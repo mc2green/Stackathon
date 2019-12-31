@@ -62,7 +62,7 @@ class Home extends Component {
           {/* {isLoggedIn ? <div>Let's set Sail {firstName}</div> : null} */}
           <Button
             className="buttons"
-            variant="info"
+            variant="outline-info"
             size="lg"
             onClick={() => this.props.history.push('/login')}
           >
@@ -70,7 +70,7 @@ class Home extends Component {
           </Button>
           <Button
             className="buttons"
-            variant="info"
+            variant="outline-info"
             size="lg"
             onClick={() => this.props.history.push('/signup')}
           >
@@ -102,47 +102,3 @@ const mapState = state => {
 }
 
 export default connect(mapState)(Home)
-
-// // const Home = ({isLoggedIn, firstName, history}) => {
-
-//   const videoOptions = {
-//     playerVars: { // https://developers.google.com/youtube/player_parameters
-//       autoplay: 1,
-//       controls: 0,
-//       rel: 0,
-//       showinfo: 0,
-//       loop: 1
-//     }
-//   };
-//   return (
-//     <div id="home">
-//       {/* {isLoggedIn ? <div>Let's set Sail {firstName}</div> : null} */}
-//       <Button variant="outline-info" onClick={() => history.push('/login')}>
-//         Login
-//       </Button>
-//       <Button variant="outline-info" onClick={() => history.push('/signup')}>
-//         Sign Up
-//       </Button>
-//       <div className="video-background">
-//         <div className="video-foreground">
-//           <YouTube
-//             videoId="AgFeZr5ptV8"
-//             opts={videoOptions}
-//             className="video-iframe"
-//             // onReady={this._onReady}
-//             // onEnd={this._onEnd}
-//           />
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
-
-// const mapState = state => {
-//   return {
-//     isLoggedIn: !!state.user.id,
-//     firstName: state.user.firstName
-//   }
-// }
-
-// export default connect(mapState)(Home)

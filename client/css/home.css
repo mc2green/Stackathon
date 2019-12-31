@@ -38,7 +38,7 @@
 
 .buttons {
   margin: 22px;
-  border: 22px solid red;
+  color: red;
 }
 
 @media (min-aspect-ratio: 16/9) {

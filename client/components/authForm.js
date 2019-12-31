@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
+import {Link} from 'react-router-dom'
 
 // import '../css/auth-form.css'
 
@@ -58,7 +59,12 @@ export const AuthForm = props => {
         <br />
         {error &&
           error.response && (
-            <div className="ui error message"> {error.response.data} </div>
+            <div className="ui error message">
+              {' '}
+              {error.response.data}
+              <Link to="/"> Back to home</Link>
+              <Link to="/signup"> Sign Up!</Link>
+            </div>
           )}
       </form>
       <a href="/auth/google">{displayName} with Google</a>
