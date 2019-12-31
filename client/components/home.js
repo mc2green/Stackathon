@@ -51,7 +51,8 @@ class Home extends Component {
       playerVars: {
         // https://developers.google.com/youtube/player_parameters
         autoplay: 1,
-        loop: 1
+        loop: 1,
+        mute: 1
       }
     }
 
