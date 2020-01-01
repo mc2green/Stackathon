@@ -15,7 +15,10 @@ class ActualMap extends Component {
       longitude: 500,
       currentLat: 500,
       currentLng: 500,
-      handlerEnabled: false
+      handlerEnabled: false,
+      activeMarker: {},
+      selectedPlace: {},
+      showingInfoWindow: false
     }
     this.displayMarkers = this.displayMarkers.bind(this)
     this.handler = this.handler.bind(this)
@@ -40,13 +43,29 @@ class ActualMap extends Component {
       handlerEnabled: true
     })
   }
+  onMarkerClick = (props, marker) => {
+    console.log('FIRE!')
+    this.setState({
+      activeMarker: marker,
+      selectedPlace: props,
+      showingInfoWindow: true
+    })
+  }
+  onInfoWindowClose = () => {
+    this.setState({
+      activeMarker: null,
+      showingInfoWindow: false
+    })
+  }
   displayMarkers = () => {
     if (this.props.places) {
       const {places} = this.props
+      console.log(places)
       return places.map(place => {
         return (
           <Marker
             key={place.id}
+            name={place.name}
             position={{
               lat: place.latitude,
               lng: place.longitude
@@ -54,6 +73,7 @@ class ActualMap extends Component {
             icon={{
               url: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
             }}
+            onClick={this.onMarkerClick}
           />
         )
       })
@@ -66,7 +86,16 @@ class ActualMap extends Component {
     return (
       <div id="map">
         <LocationSearchInput handler={this.handler} />
-        <button type="button" onClick={() => this.props.addPlace(this.state)}>
+        <button
+          type="button"
+          onClick={() =>
+            this.props.addPlace({
+              name: this.state.name,
+              latitude: this.state.latitude,
+              longitude: this.state.longitude
+            })
+          }
+        >
           + Add Place
         </button>
         {this.props.places &&
@@ -91,11 +120,22 @@ class ActualMap extends Component {
                 }}
               />
               {this.displayMarkers()}
+              <InfoWindow
+                marker={this.state.activeMarker}
+                onClose={this.onInfoWindowClose}
+                visible={this.state.showingInfoWindow}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.name}</h4>
+                </div>
+              </InfoWindow>
             </Map>
           </div>
         ) : (
           <div>
-            <h1 className="display-1">Your map is still loading...</h1>
+            <h1 className="display-1 text-info">
+              Your map is still loading...
+            </h1>
           </div>
         )}
       </div>

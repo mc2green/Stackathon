@@ -33,7 +33,7 @@ export const addPlaceThunk = place => {
       console.log('DATA', data)
       dispatch(addPlace(data))
     } catch (error) {
-      console.log('THERE IS A PROBLEM WITH THE ADDPLACESTHUNK')
+      console.log('THERE IS A PROBLEM WITH THE ADDPLACESTHUNK', error)
     }
   }
 }
