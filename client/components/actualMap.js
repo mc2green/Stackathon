@@ -18,7 +18,9 @@ class ActualMap extends Component {
       handlerEnabled: false,
       activeMarker: {},
       selectedPlace: {},
-      showingInfoWindow: false
+      showingInfoWindow: false,
+      bounds: {},
+      zoom: 9
     }
     this.displayMarkers = this.displayMarkers.bind(this)
     this.handler = this.handler.bind(this)
@@ -36,19 +38,28 @@ class ActualMap extends Component {
     })
   }
   handler(name, lat, lng) {
+    // let boundsAutocomplete = new this.props.google.maps.LatLngBounds();
+    // boundsAutocomplete.extend({lat: lat, lng: lng})
     this.setState({
       name: name,
       latitude: lat,
       longitude: lng,
-      handlerEnabled: true
+      handlerEnabled: true,
+      zoom: 10
+      // bounds: boundsAutocomplete
     })
   }
   onMarkerClick = (props, marker) => {
-    console.log('FIRE!')
+    // let boundsAutocomplete2 = new this.props.google.maps.LatLngBounds();
+    // boundsAutocomplete2.extend({lat: props.position.lat, lng: props.position.lng})
     this.setState({
       activeMarker: marker,
       selectedPlace: props,
-      showingInfoWindow: true
+      showingInfoWindow: true,
+      latitude: props.position.lat,
+      longitude: props.position.lng,
+      // bounds: boundsAutocomplete2,
+      zoom: 11
     })
   }
   onInfoWindowClose = () => {
@@ -60,7 +71,7 @@ class ActualMap extends Component {
   displayMarkers = () => {
     if (this.props.places) {
       const {places} = this.props
-      console.log(places)
+
       return places.map(place => {
         return (
           <Marker
@@ -109,9 +120,10 @@ class ActualMap extends Component {
                 lat: this.state.currentLat,
                 lng: this.state.currentLng
               }}
-              defaultZoom={this.props.zoom}
-              centerAroundCurrentLocation={true}
+              defaultZoom={this.state.zoom}
+              // centerAroundCurrentLocation={true}
               center={{lat: this.state.latitude, lng: this.state.longitude}}
+              bounds={this.state.bounds}
             >
               <Marker
                 position={{lat: this.state.latitude, lng: this.state.longitude}}
@@ -127,6 +139,7 @@ class ActualMap extends Component {
               >
                 <div>
                   <h4>{this.state.selectedPlace.name}</h4>
+                  <button type="button">Remove</button>
                 </div>
               </InfoWindow>
             </Map>
