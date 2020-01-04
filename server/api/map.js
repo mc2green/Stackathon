@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
     if (places) {
       res.send(places)
     } else {
-      res.sendStatus(404)
+      res.status(404).send('Can not get places!')
     }
   } catch (error) {
     next(error)
@@ -31,7 +31,30 @@ router.post('/', async (req, res, next) => {
     if (createPlace) {
       res.json(createPlace)
     } else {
-      res.sendStatus(404)
+      res.status(404).send('Can not add place!')
+    }
+  } catch (error) {
+    next(error)
+  }
+})
+router.delete('/', async (req, res, next) => {
+  try {
+    const {name} = req.body
+    const deletePlace = await Place.findOne({
+      where: {
+        name: name,
+        userId: req.user.id
+      }
+    })
+    if (deletePlace) {
+      const deletedPlace = await deletePlace.destroy()
+      if (deletedPlace) {
+        res.send(`${deletePlace} has successfully been deleted`)
+      } else {
+        res.send(`Failed to delete ${deletePlace}`)
+      }
+    } else {
+      res.send(`${deletePlace} has successfully been deleted`)
     }
   } catch (error) {
     next(error)
