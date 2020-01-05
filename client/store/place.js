@@ -27,7 +27,7 @@ export const getPlacesThunk = () => {
       const {data} = await axios.get('/api/map')
       dispatch(getPlaces(data))
     } catch (error) {
-      console.log('THERE IS A PROBLEM WITH GETPLACESTHUNK')
+      console.log('THERE IS A PROBLEM WITH GETPLACESTHUNK', error)
     }
   }
 }
@@ -36,7 +36,6 @@ export const addPlaceThunk = place => {
   return async dispatch => {
     try {
       const {data} = await axios.post('/api/map', place)
-      console.log('DATA', data)
       dispatch(addPlace(data))
     } catch (error) {
       console.log('THERE IS A PROBLEM WITH THE ADDPLACESTHUNK', error)
@@ -47,10 +46,7 @@ export const addPlaceThunk = place => {
 export const deletePlaceThunk = place => {
   return async dispatch => {
     try {
-      console.log('DELETE STUFF', place)
-
       const {data} = await axios.delete(`/api/map/${place}`)
-      console.log('DELETE DATA', data)
       dispatch(deletePlace(data))
     } catch (error) {
       console.log('THERE IS A PROBLEM WITH THE DELETEPLACESTHUNK', error)

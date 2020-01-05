@@ -21,7 +21,6 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    console.log('ROOOUTER POST', req.body)
     const {name, latitude, longitude} = req.body
     const createPlace = await Place.create({
       name: name,
@@ -40,10 +39,7 @@ router.post('/', async (req, res, next) => {
 })
 router.delete('/:place', async (req, res, next) => {
   try {
-    console.log('BODY', req.body)
-    console.log('PARAAAAAAMS', req.params)
     const {place} = req.params
-    console.log('THEPLACE', place)
     const deletePlace = await Place.findOne({
       where: {
         name: place,
@@ -58,7 +54,7 @@ router.delete('/:place', async (req, res, next) => {
         res.send(`Failed to delete ${deletePlace}`)
       }
     } else {
-      res.send(`${deletePlace} has successfully been deleted`)
+      res.send(`${deletePlace} was not found`)
     }
   } catch (error) {
     next(error)

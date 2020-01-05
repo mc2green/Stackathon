@@ -12,7 +12,6 @@ import {Container} from 'react-bootstrap'
  */
 export const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-  console.log('LOGIN', props)
 
   return (
     <Container>

@@ -17,12 +17,10 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    console.log('PROPS', this.props)
     this.randomVideo()
   }
 
   randomVideo = () => {
-    console.log('RANDOM OLD VIDEO', this.state.selectedVideo)
     let newVideo = this.state.customVideos[
       Math.floor(Math.random() * this.state.customVideos.length)
     ]
@@ -32,7 +30,6 @@ class Home extends Component {
     this.setState({
       selectedVideo: newVideo
     })
-    console.log('RANDOM NEW VIDEO', this.state.selectedVideo)
   }
 
   _onReady = event => {
@@ -41,7 +38,6 @@ class Home extends Component {
   }
 
   _onError = event => {
-    console.log(event.target.getVideoData())
     this.setState({
       selectedVideo: this.state.customVideos[
         Math.floor(Math.random() * this.state.customVideos.length)

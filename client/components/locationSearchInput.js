@@ -17,7 +17,6 @@ class LocationSearchInput extends React.Component {
 
   helperFunction(arg1, arg2) {
     this.props.handler(this.state.address, arg1, arg2)
-    console.log('ARG1', arg1)
   }
   handleSelect = address => {
     geocodeByAddress(address)

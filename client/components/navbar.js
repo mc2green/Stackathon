@@ -10,7 +10,6 @@ import {faMapMarkedAlt} from '@fortawesome/free-solid-svg-icons'
 
 const NavbarComponent = ({handleClick, isLoggedIn}) => (
   <div id="navbar">
-    {console.log('ISLOGGEDIN', isLoggedIn)}
     {isLoggedIn ? (
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/">

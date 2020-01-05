@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Map, GoogleApiWrapper, Marker, InfoWindow} from 'google-maps-react'
+import {Button} from 'react-bootstrap'
 import {getPlacesThunk, addPlaceThunk, deletePlaceThunk} from '../store/place'
 import {connect} from 'react-redux'
 import LocationSearchInput from './locationSearchInput'
@@ -71,7 +72,6 @@ class ActualMap extends Component {
   displayMarkers = () => {
     if (this.props.places) {
       const {places} = this.props
-
       return places.map(place => {
         return (
           <Marker
@@ -97,8 +97,10 @@ class ActualMap extends Component {
     return (
       <div id="map">
         <LocationSearchInput handler={this.handler} />
-        <button
-          type="button"
+        <Button
+          className="buttons"
+          variant="outline-info"
+          size="lg"
           onClick={() =>
             this.props.addPlace({
               name: this.state.name,
@@ -108,14 +110,16 @@ class ActualMap extends Component {
           }
         >
           + Add Place
-        </button>
+        </Button>
 
-        <button
-          type="button"
+        <Button
+          className="buttons"
+          variant="outline-info"
+          size="lg"
           onClick={() => this.props.deletePlace(this.state.selectedPlace.name)}
         >
           Remove
-        </button>
+        </Button>
 
         {this.props.places &&
         this.state.currentLat !== 500 &&
