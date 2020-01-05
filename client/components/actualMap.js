@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Map, GoogleApiWrapper, Marker, InfoWindow} from 'google-maps-react'
-import {getPlacesThunk, addPlaceThunk} from '../store/place'
+import {getPlacesThunk, addPlaceThunk, deletePlaceThunk} from '../store/place'
 import {connect} from 'react-redux'
 import LocationSearchInput from './locationSearchInput'
 import GOOGLE_API_KEY from '../../secrets'
@@ -109,6 +109,14 @@ class ActualMap extends Component {
         >
           + Add Place
         </button>
+
+        <button
+          type="button"
+          onClick={() => this.props.deletePlace(this.state.selectedPlace.name)}
+        >
+          Remove
+        </button>
+
         {this.props.places &&
         this.state.currentLat !== 500 &&
         this.state.longitude !== 500 ? (
@@ -139,7 +147,6 @@ class ActualMap extends Component {
               >
                 <div>
                   <h4>{this.state.selectedPlace.name}</h4>
-                  <button type="button">Remove</button>
                 </div>
               </InfoWindow>
             </Map>
@@ -161,7 +168,8 @@ const mapStateToProps = state => ({
 })
 const mapDispatchToProps = dispatch => ({
   getPlaces: () => dispatch(getPlacesThunk()),
-  addPlace: place => dispatch(addPlaceThunk(place))
+  addPlace: place => dispatch(addPlaceThunk(place)),
+  deletePlace: place => dispatch(deletePlaceThunk(place))
 })
 const WrappedContainer = GoogleApiWrapper({
   apiKey: process.env.GOOGLE_API_KEY
