@@ -35,7 +35,6 @@ export const getPlacesThunk = () => {
 export const addPlaceThunk = place => {
   return async dispatch => {
     try {
-      console.log('THUNK STUFF', place)
       const {data} = await axios.post('/api/map', place)
       console.log('DATA', data)
       dispatch(addPlace(data))
@@ -66,7 +65,6 @@ export default function placesReducer(places = [], action) {
     case ADD_PLACE:
       return [...places, action.place]
     case DELETE_PLACE:
-      console.log('ACTION', action)
       for (let i = 0; i < places.length; i++) {
         if (places[i].id === action.place.id) {
           places.splice(i, 1)
