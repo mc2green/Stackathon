@@ -31,7 +31,7 @@ Go to http://localhost:8080 to use BeenThere!
 
 ### `Matthew Chen`
 
-Github: https://github.com/mc2green
+Email: mc.2green@gmail.com
 
 LinkedIn: https://www.linkedin.com/in/matthew-chen-2mc2/
 
