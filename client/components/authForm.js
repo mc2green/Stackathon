@@ -68,7 +68,7 @@ export const AuthForm = props => {
               </div>
             )}
         </form>
-        <a href="/auth/google">{displayName} with Google</a>
+        {/* <a href="/auth/google">{displayName} with Google</a> */}
       </div>
     </Container>
   )
