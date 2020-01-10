@@ -91,4 +91,6 @@ https://cloud.google.com/maps-platform/
 
 <img width="800" alt="Screen Shot 2020-01-09 at 1 44 47 PM" src="https://user-images.githubusercontent.com/52970570/72095313-3cac1980-32e6-11ea-860d-b3b39b8910ae.png">
 
+[Screen Recording 2020-01-10 at 6.49.47 PM.zip](https://github.com/mc2green/been-there-stackathon/files/4048663/Screen.Recording.2020-01-10.at.6.49.47.PM.zip)
+
 <img width="800" alt="Screen Shot 2020-01-09 at 1 43 37 PM" src="https://user-images.githubusercontent.com/52970570/72095340-4afa3580-32e6-11ea-9b38-80e3730ab000.png">
