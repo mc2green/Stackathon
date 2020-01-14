@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Map, GoogleApiWrapper, Marker, InfoWindow} from 'google-maps-react'
-import {Button} from 'react-bootstrap'
+import {Button, Container} from 'react-bootstrap'
 import {getPlacesThunk, addPlaceThunk, deletePlaceThunk} from '../store/place'
 import {connect} from 'react-redux'
 import LocationSearchInput from './locationSearchInput'
@@ -95,36 +95,38 @@ class ActualMap extends Component {
 
   render() {
     return (
-      <div id="map">
-        <LocationSearchInput handler={this.handler} />
-        <Button
-          className="buttons"
-          variant="outline-info"
-          size="lg"
-          onClick={() =>
-            this.props.addPlace({
-              name: this.state.name,
-              latitude: this.state.latitude,
-              longitude: this.state.longitude
-            })
-          }
-        >
-          + Add Place
-        </Button>
-
-        <Button
-          className="buttons"
-          variant="outline-info"
-          size="lg"
-          onClick={() => this.props.deletePlace(this.state.selectedPlace.name)}
-        >
-          Remove
-        </Button>
-
+      <div id="work">
+        <Container id="actualMapContainer">
+          <LocationSearchInput handler={this.handler} />
+          <Button
+            className="buttons"
+            variant="outline-info"
+            size="lg"
+            onClick={() =>
+              this.props.addPlace({
+                name: this.state.name,
+                latitude: this.state.latitude,
+                longitude: this.state.longitude
+              })
+            }
+          >
+            Add Place
+          </Button>
+          <Button
+            className="buttons"
+            variant="outline-info"
+            size="lg"
+            onClick={() =>
+              this.props.deletePlace(this.state.selectedPlace.name)
+            }
+          >
+            Remove
+          </Button>
+        </Container>
         {this.props.places &&
         this.state.currentLat !== 500 &&
         this.state.longitude !== 500 ? (
-          <div id="work">
+          <div id="map">
             <Map
               google={this.props.google}
               showsUserLocation={true}

@@ -18,8 +18,8 @@ export default class Travel extends Component {
           <h1 className="display-5 text-info">But it will include:</h1>
           <ul>
             <li>
-              Bootstrap Cards to input Articles from different places like
-              Buzzfeed Articles & NYTimes Articles.
+              Bootstrap Cards to input articles from different websites like
+              Buzzfeed & NYTimes.
             </li>
           </ul>
         </Container>

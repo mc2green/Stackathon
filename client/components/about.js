@@ -14,7 +14,6 @@ export default class About extends Component {
           <h1 id="firstHeading" className="display-3 text-warning">
             This page is currently under construction
           </h1>
-          <hr />
           <h1 className="display-5 text-info">But it will include:</h1>
           <ul>
             <li>A description of the app.</li>

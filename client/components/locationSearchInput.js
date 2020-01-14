@@ -3,6 +3,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from 'react-places-autocomplete'
+import {Container, InputGroup, FormControl} from 'react-bootstrap'
 
 class LocationSearchInput extends Component {
   constructor(props) {
@@ -36,12 +37,29 @@ class LocationSearchInput extends Component {
       >
         {({getInputProps, suggestions, getSuggestionItemProps, loading}) => (
           <div>
-            <input
+            <InputGroup
+              size="lg"
               {...getInputProps({
                 placeholder: 'Search Places ...',
                 className: 'location-search-input'
               })}
-            />
+            >
+              <InputGroup.Prepend>
+                <InputGroup.Text id="inputGroup-sizing-lg">
+                  Search
+                </InputGroup.Text>
+              </InputGroup.Prepend>
+              <FormControl
+                aria-label="Large"
+                aria-describedby="inputGroup-sizing-sm"
+              />
+            </InputGroup>
+            {/* <input size="lg"
+              {...getInputProps({
+                placeholder: 'Search Places ...',
+                className: 'location-search-input'
+              })}
+            /> */}
             <div className="autocomplete-dropdown-container">
               {loading && <div>Loading...</div>}
               {suggestions.map(suggestion => {
