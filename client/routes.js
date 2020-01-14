@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Route, Switch, withRouter} from 'react-router-dom'
-import {ActualMap, Login, Signup, Home} from './components'
+import {ActualMap, Login, Signup, Home, About, Travel} from './components'
 import {me} from './store'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
@@ -19,6 +19,8 @@ class Routes extends Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/map" component={ActualMap} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/travel" component={Travel} />
       </Switch>
     )
   }

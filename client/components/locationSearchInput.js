@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {Component} from 'react'
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from 'react-places-autocomplete'
 
-class LocationSearchInput extends React.Component {
+class LocationSearchInput extends Component {
   constructor(props) {
     super(props)
     this.state = {address: ''}
@@ -54,10 +54,8 @@ class LocationSearchInput extends React.Component {
                   : {backgroundColor: '#ffffff', cursor: 'pointer'}
                 return (
                   <div
-                    {...getSuggestionItemProps(suggestion, {
-                      className,
-                      style
-                    })}
+                    key={suggestion}
+                    {...getSuggestionItemProps(suggestion, {className, style})}
                   >
                     <span>{suggestion.description}</span>
                   </div>
