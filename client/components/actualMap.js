@@ -25,6 +25,7 @@ class ActualMap extends Component {
     }
     this.displayMarkers = this.displayMarkers.bind(this)
     this.handler = this.handler.bind(this)
+    this.onInfoWindowClose = this.onInfoWindowClose.bind(this)
   }
 
   componentDidMount() {
@@ -69,6 +70,10 @@ class ActualMap extends Component {
       showingInfoWindow: false
     })
   }
+  onDeleteMarker = placeName => {
+    this.props.deletePlace(placeName)
+    this.onInfoWindowClose()
+  }
   displayMarkers = () => {
     if (this.props.places) {
       const {places} = this.props
@@ -94,6 +99,7 @@ class ActualMap extends Component {
   }
 
   render() {
+    console.log(this.state.selectedPlace)
     const style = {
       display: 'flex',
       height: '80%',
@@ -128,7 +134,8 @@ class ActualMap extends Component {
             variant="outline-info"
             size="lg"
             onClick={() =>
-              this.props.deletePlace(this.state.selectedPlace.name)
+              // this.props.deletePlace(this.state.selectedPlace.name)
+              this.onDeleteMarker(this.state.selectedPlace.name)
             }
           >
             Remove
