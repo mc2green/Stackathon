@@ -94,9 +94,20 @@ class ActualMap extends Component {
   }
 
   render() {
+    const style = {
+      display: 'flex',
+      height: '80%',
+      width: '97%',
+      justifyContent: 'center',
+      textAlign: 'center',
+      alignItems: 'center',
+      margin: 'auto',
+      top: '-7em',
+      overflow: 'hidden'
+    }
     return (
       <div id="work">
-        <Container id="actualMapContainer">
+        <Container id="topMenu">
           <LocationSearchInput handler={this.handler} />
           <Button
             className="buttons"
@@ -123,19 +134,20 @@ class ActualMap extends Component {
             Remove
           </Button>
         </Container>
+
         {this.props.places &&
         this.state.currentLat !== 500 &&
         this.state.longitude !== 500 ? (
-          <div id="map">
+          <div>
             <Map
               google={this.props.google}
+              style={style}
               showsUserLocation={true}
               initialCenter={{
                 lat: this.state.currentLat,
                 lng: this.state.currentLng
               }}
               defaultZoom={this.state.zoom}
-              // centerAroundCurrentLocation={true}
               center={{lat: this.state.latitude, lng: this.state.longitude}}
               bounds={this.state.bounds}
             >
@@ -158,7 +170,7 @@ class ActualMap extends Component {
             </Map>
           </div>
         ) : (
-          <div>
+          <div id="loadingPage">
             <h1 className="display-1 text-info">
               Your map is still loading...
             </h1>

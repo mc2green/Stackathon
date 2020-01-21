@@ -1,15 +1,23 @@
-#map {
-  display: flex;
-  height: 100vh;
-  width: '100vh';
-  margin: auto;
-}
 #work {
-  background: rgba(3, 240, 3, 0.76);
-}
-#actualMapContainer {
-  /* display: flex; */
+  background: rgba(2, 129, 2, 1);
+  height: 120vh;
   justify-content: center;
   text-align: center;
   align-items: center;
+  overflow: hidden;
+}
+
+#topMenu {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  overflow: hidden;
+}
+#loadingPage {
+  background: rgba(2, 129, 2, 1);
+  height: 100vh;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  overflow: hidden;
 }

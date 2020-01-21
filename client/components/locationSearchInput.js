@@ -51,7 +51,7 @@ class LocationSearchInput extends Component {
               </InputGroup.Prepend>
               <FormControl
                 aria-label="Large"
-                aria-describedby="inputGroup-sizing-sm"
+                aria-describedby="inputGroup-sizing-lg"
               />
             </InputGroup>
             {/* <input size="lg"
