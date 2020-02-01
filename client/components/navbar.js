@@ -6,8 +6,6 @@ import {Navbar, Nav} from 'react-bootstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMapMarkedAlt} from '@fortawesome/free-solid-svg-icons'
 
-// import '../css/navbar.css'
-
 const NavbarComponent = ({handleClick, isLoggedIn}) => (
   <div id="navbar">
     {isLoggedIn ? (
@@ -19,6 +17,8 @@ const NavbarComponent = ({handleClick, isLoggedIn}) => (
           <Nav.Link href="/about">About</Nav.Link>
           <Nav.Link href="/map">My Map</Nav.Link>
           <Nav.Link href="/travel">Travel</Nav.Link>
+        </Nav>
+        <Nav className="ml-auto">
           <Nav.Link href="/" onClick={handleClick}>
             Logout
           </Nav.Link>

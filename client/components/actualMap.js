@@ -22,10 +22,13 @@ class ActualMap extends Component {
       showingInfoWindow: false,
       bounds: {},
       zoom: 9
+      // content: "default content"
     }
     this.displayMarkers = this.displayMarkers.bind(this)
     this.handler = this.handler.bind(this)
     this.onInfoWindowClose = this.onInfoWindowClose.bind(this)
+    // this.myChangeHandler = this.myChangeHandler.bind(this);
+    // this.mySubmitHandler = this.mySubmitHandler.bind(this);
   }
 
   componentDidMount() {
@@ -74,6 +77,7 @@ class ActualMap extends Component {
     this.props.deletePlace(placeName)
     this.onInfoWindowClose()
   }
+
   displayMarkers = () => {
     if (this.props.places) {
       const {places} = this.props
@@ -99,7 +103,6 @@ class ActualMap extends Component {
   }
 
   render() {
-    console.log(this.state.selectedPlace)
     const style = {
       display: 'flex',
       height: '80%',
@@ -133,10 +136,7 @@ class ActualMap extends Component {
             className="buttons"
             variant="outline-info"
             size="lg"
-            onClick={() =>
-              // this.props.deletePlace(this.state.selectedPlace.name)
-              this.onDeleteMarker(this.state.selectedPlace.name)
-            }
+            onClick={() => this.onDeleteMarker(this.state.selectedPlace.name)}
           >
             Remove
           </Button>
@@ -178,9 +178,7 @@ class ActualMap extends Component {
           </div>
         ) : (
           <div id="loadingPage">
-            <h1 className="display-1 text-info">
-              Your map is still loading...
-            </h1>
+            <h1 className="display-1 text-info">Your map is loading...</h1>
           </div>
         )}
       </div>
