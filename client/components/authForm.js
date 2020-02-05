@@ -19,7 +19,6 @@ export const AuthForm = props => {
         {name == 'signup' && <h1>Sign Up</h1>}
         {name !== 'signup' && <h1>Log In</h1>}
         <br />
-
         <form
           id="form"
           onSubmit={handleSubmit}
@@ -41,7 +40,6 @@ export const AuthForm = props => {
             />
           </div>
           <br />
-
           {name === 'signup' && (
             <div>
               <div>
