@@ -1,0 +1,28 @@
+#travelBackground {
+  display: flex;
+  background-image: url('http://www.hdwallpaper.nu/wp-content/uploads/2015/04/536126.jpg');
+  height: 97vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+}
+#travelContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: rgba(245, 245, 245, 0.77);
+  font-size: 2em;
+  color: steelblue;
+  height: auto;
+  padding: 2em;
+  border-radius: 22%;
+  box-shadow: 5px 10px 20px goldenrod;
+  border: 1px solid dodgerblue;
+}
+#firstHeading {
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  text-shadow: 2px 2px 2px slategrey;
+}

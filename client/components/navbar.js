@@ -1,30 +1,39 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import {Navbar, Nav} from 'react-bootstrap'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faMapMarkedAlt} from '@fortawesome/free-solid-svg-icons'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>BOILERMAKER</h1>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
+const NavbarComponent = ({handleClick, isLoggedIn}) => (
+  <div id="navbar">
+    {isLoggedIn ? (
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="/">
+          <FontAwesomeIcon icon={faMapMarkedAlt} /> BeenThere!
+        </Navbar.Brand>
+        <Nav className="mr-auto">
+          <Nav.Link href="/about">About</Nav.Link>
+          <Nav.Link href="/map">My Map</Nav.Link>
+          <Nav.Link href="/travel">Travel</Nav.Link>
+        </Nav>
+        <Nav className="ml-auto">
+          <Nav.Link href="/" onClick={handleClick}>
             Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
-    </nav>
-    <hr />
+          </Nav.Link>
+        </Nav>
+      </Navbar>
+    ) : (
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="/">
+          <FontAwesomeIcon icon={faMapMarkedAlt} /> BeenThere!
+        </Navbar.Brand>
+        <Nav className="mr-auto">
+          <Nav.Link href="/map/demo">Demo Map</Nav.Link>
+        </Nav>
+      </Navbar>
+    )}
   </div>
 )
 
@@ -45,12 +54,12 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(mapState, mapDispatch)(Navbar)
+export default connect(mapState, mapDispatch)(NavbarComponent)
 
 /**
  * PROP TYPES
  */
-Navbar.propTypes = {
+NavbarComponent.propTypes = {
   handleClick: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired
 }

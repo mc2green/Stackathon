@@ -1,18 +1,71 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Place} = require('../server/db/models')
+
+const users = [
+  {
+    firstName: 'Jeff',
+    lastName: 'Bezos',
+    email: 'BigJDawg@ggmail.com',
+    password: 'Password123'
+  },
+
+  {
+    firstName: 'Logan',
+    lastName: 'LClossier',
+    email: 'Xxda14u2NvxX@ggmail.com',
+    password: 'Password123'
+  },
+  {
+    firstName: 'Don',
+    lastName: 'Julio',
+    email: 'ILuvYaats@ggmail.com',
+    password: 'Password123'
+  },
+  {
+    firstName: 'Richard',
+    lastName: 'Long',
+    email: 'CPT-R_LONG@ggmail.com',
+    password: 'Password123'
+  },
+  {
+    firstName: 'Cornelius',
+    lastName: 'Blackbeard',
+    email: 'NotThatBlackbeard@ggmail.com',
+    password: 'Password123'
+  },
+  {
+    firstName: 'Megan',
+    lastName: 'Donnelly',
+    email: 'megan@gmail.com',
+    password: 'test1234'
+  }
+]
+
+const places = [
+  {
+    name: 'Seatle',
+    latitude: 47.6062,
+    longitude: -122.3321
+  },
+  {
+    name: 'Chicago',
+    latitude: 41.8781,
+    longitude: -87.6298
+  },
+  {
+    name: 'Los Angeles',
+    latitude: 34.0522,
+    longitude: -118.2437
+  }
+]
 
 async function seed() {
   await db.sync({force: true})
+  await Place.bulkCreate(places)
+  await User.bulkCreate(users)
   console.log('db synced!')
-
-  const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
-  ])
-
-  console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
 }
 

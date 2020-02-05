@@ -1,34 +1,35 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {withRouter, Route, Switch} from 'react-router-dom'
-import PropTypes from 'prop-types'
-import {Login, Signup, UserHome} from './components'
+import {Route, Switch, withRouter} from 'react-router-dom'
+import {
+  ActualMap,
+  Login,
+  Signup,
+  Home,
+  About,
+  Travel,
+  DemoMap
+} from './components'
 import {me} from './store'
+import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
 
 /**
- * COMPONENT
+ * COMPONEN
  */
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()
   }
-
   render() {
-    const {isLoggedIn} = this.props
-
     return (
       <Switch>
-        {/* Routes placed here are available to all visitors */}
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
-        {isLoggedIn && (
-          <Switch>
-            {/* Routes placed here are only available after logging in */}
-            <Route path="/home" component={UserHome} />
-          </Switch>
-        )}
-        {/* Displays our Login component as a fallback */}
-        <Route component={Login} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/map" component={ActualMap} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/travel" component={Travel} />
+        <Route exact path="/map/demo" component={DemoMap} />
       </Switch>
     )
   }
@@ -44,7 +45,6 @@ const mapState = state => {
     isLoggedIn: !!state.user.id
   }
 }
-
 const mapDispatch = dispatch => {
   return {
     loadInitialData() {

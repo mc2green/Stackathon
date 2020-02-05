@@ -1,0 +1,28 @@
+#background {
+  display: flex;
+  background-image: url('https://media4.s-nbcnews.com/j/newscms/2018_30/1343185/shenandoah-national-park-today-main-180601_fcac47c1cb39475c92ef15d924932360.fit-760w.jpg');
+  height: 97vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+}
+#container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: rgba(245, 245, 245, 0.77);
+  font-size: 2em;
+  color: steelblue;
+  height: auto;
+  padding: 2em;
+  border-radius: 22%;
+  box-shadow: 5px 10px 20px darkslateblue;
+  border: 1px solid maroon;
+}
+#firstHeading {
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  text-shadow: 2px 2px 2px slategrey;
+}
