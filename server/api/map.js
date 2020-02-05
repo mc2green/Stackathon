@@ -22,7 +22,7 @@ router.get('/demo', async (req, res, next) => {
   try {
     const places = await Place.findAll({
       where: {
-        userId: 0
+        userId: 1
       }
     })
     if (places) {
@@ -60,7 +60,7 @@ router.post('/demo', async (req, res, next) => {
       name: name,
       latitude: latitude,
       longitude: longitude,
-      userId: 0
+      userId: 1
     })
     if (createPlace) {
       res.json(createPlace)
@@ -100,7 +100,7 @@ router.delete('/:place/demo', async (req, res, next) => {
     const deletePlace = await Place.findOne({
       where: {
         name: place,
-        userId: 0
+        userId: 1
       }
     })
     if (deletePlace) {
