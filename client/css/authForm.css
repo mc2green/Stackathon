@@ -1,0 +1,14 @@
+#forms {
+  display: flex;
+  height: 94vh;
+  max-width: 50.5%;
+  width: 40rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
