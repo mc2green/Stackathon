@@ -30,7 +30,7 @@ const NavbarComponent = ({handleClick, isLoggedIn}) => (
           <FontAwesomeIcon icon={faMapMarkedAlt} /> BeenThere!
         </Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link href="/map/demo">Demo Map</Nav.Link>
+          <Nav.Link href="/demo">Demo Map</Nav.Link>
         </Nav>
       </Navbar>
     )}

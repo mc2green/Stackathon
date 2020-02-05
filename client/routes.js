@@ -29,7 +29,7 @@ class Routes extends Component {
         <Route exact path="/map" component={ActualMap} />
         <Route exact path="/about" component={About} />
         <Route exact path="/travel" component={Travel} />
-        <Route exact path="/map/demo" component={DemoMap} />
+        <Route exact path="/demo" component={DemoMap} />
       </Switch>
     )
   }
