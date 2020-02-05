@@ -26,9 +26,12 @@ const NavbarComponent = ({handleClick, isLoggedIn}) => (
       </Navbar>
     ) : (
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <FontAwesomeIcon icon={faMapMarkedAlt} /> BeenThere!
         </Navbar.Brand>
+        <Nav className="mr-auto">
+          <Nav.Link href="/map/demo">Demo Map</Nav.Link>
+        </Nav>
       </Navbar>
     )}
   </div>

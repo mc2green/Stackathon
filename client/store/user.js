@@ -11,7 +11,12 @@ const UPDATE_USER = 'UPDATE_USER'
 /**
  * INITIAL STATE
  */
-const defaultUser = {}
+const defaultUser = {
+  id: 0,
+  firstName: 'Jeff',
+  lastName: 'Bezos',
+  email: 'demo@demo.com'
+}
 
 /**
  * ACTION CREATORS
@@ -27,6 +32,7 @@ export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
     dispatch(getUser(res.data || defaultUser))
+    console.log('res.data', res.data, 'defaultUser', defaultUser)
   } catch (err) {
     console.error(err)
   }

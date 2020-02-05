@@ -5,7 +5,7 @@ import {auth} from '../store'
 import {Link} from 'react-router-dom'
 import {Container} from 'react-bootstrap'
 
-// import '../css/auth-form.css'
+import '../css/authForm.css'
 
 /**
  * COMPONENT
@@ -14,13 +14,22 @@ export const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <Container>
-      <div id="form" className="ui form error">
-        <form onSubmit={handleSubmit} name={name} className="ui mini form">
+    <Container id="forms">
+      <div className="ui form error">
+        {name == 'signup' && <h1>Sign Up</h1>}
+        {name !== 'signup' && <h1>Log In</h1>}
+        <br />
+        <form
+          id="form"
+          onSubmit={handleSubmit}
+          name={name}
+          className="ui mini form"
+        >
           <div>
             <label htmlFor="email" />
             <input name="email" type="email" placeholder="email" required />
           </div>
+          <br />
           <div>
             <label htmlFor="password" />
             <input
@@ -30,6 +39,7 @@ export const AuthForm = props => {
               required
             />
           </div>
+          <br />
           {name === 'signup' && (
             <div>
               <div>
@@ -41,6 +51,7 @@ export const AuthForm = props => {
                   required
                 />
               </div>
+              <br />
               <div>
                 <label htmlFor="lastName" />
                 <input
@@ -50,6 +61,7 @@ export const AuthForm = props => {
                   required
                 />
               </div>
+              <br />
             </div>
           )}
           <div>
