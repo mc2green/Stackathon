@@ -89,6 +89,6 @@ https://cloud.google.com/maps-platform/
 
 ## Examples
 
-<img width="800" alt="Screen Shot 2020-01-09 at 1 44 47 PM" src="https://user-images.githubusercontent.com/52970570/72095313-3cac1980-32e6-11ea-860d-b3b39b8910ae.png">
+<img width="1397" alt="Screen Shot 2020-02-06 at 11 13 36 AM" src="https://user-images.githubusercontent.com/52970570/73955679-b9c0b380-48d1-11ea-9b63-f3a2ece325ef.png">
 
 <img width="800" alt="Screen Shot 2020-01-09 at 1 43 37 PM" src="https://user-images.githubusercontent.com/52970570/72095340-4afa3580-32e6-11ea-9b38-80e3730ab000.png">
