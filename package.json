@@ -46,7 +46,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
-    "axios": "^0.19.2",
+    "axios": "^0.21.2",
     "bootstrap": "^4.6.1",
     "compression": "^1.7.3",
     "connect-session-sequelize": "^6.1.1",
